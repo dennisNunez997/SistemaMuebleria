@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons>
+        <ion-button (click)="goToMenu()">
+          <ion-icon name="arrow-back" slot="start"></ion-icon>
+          Regresar
+        </ion-button>
+      </ion-buttons>
+    <h3 slot="end">{{nombre_admin}} {{apellido_admin}}</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="pushCategoria(validations_form.value)">
+    <ion-item>
+      <ion-label color="primary">Nombre de la categoria</ion-label>
+      <ion-input [(ngModel)]="nombre_categoria" style="height: 30%; font-size: 15px;" type="text" formControlName="nombre_categoria"></ion-input>
+    </ion-item>
+            
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.nombre_categoria">
+        <div style="color: #eb445a;" class="error-message" *ngIf="validations_form.get('nombre_categoria').hasError(validation.type) && (validations_form.get('nombre_categoria').dirty || validations_form.get('nombre_categoria').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block" fill="solid" size="default" color="success">Añadir categoria</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p></p>
+      </ion-col>
+      <ion-col>
+        <p>Categoria</p>
+      </ion-col>
+      <ion-col>
+        <p>Editar</p>
+      </ion-col>
+      <ion-col>
+        <p>Eliminar</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let categoria of categorias; let i=index">
+    
+    <ion-row>
+      <ion-col>{{i+1}}</ion-col>
+      <ion-col>
+        {{categoria.nombre_categoria}}
+        <ion-input [(ngModel)]="categoria_ed"  disabled="{{isDisabled}}" ></ion-input>
+              
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" (click)="removeCategorias(categoria.id_categoria)">          
+          <ion-icon name="trash-outline">
+          </ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button *ngIf="!save" (click)="editCategoria(categoria.id_categoria)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <!--
+          (click)="saveChanges(categoria.id_categoria)"
+        -->
+        <ion-button *ngIf="save" color="success" (click)="saveChanges(categoria.id_categoria)" >
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

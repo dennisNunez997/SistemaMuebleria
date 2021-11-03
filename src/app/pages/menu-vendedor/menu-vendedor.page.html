@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>globale</ion-title>
+    <ion-item (click)="goToProfile()" slot="end">
+      <h3>{{nombre_vendedor}} {{apellido_vendedor}}</h3>
+    </ion-item>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="botones">
+    <div>
+      <ion-button (click)="goToProfile()" class="button1">
+        <div>
+          <div>
+            <ion-icon name="cart" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>  
+            <h6>Mi tienda</h6>
+          </div>
+        </div>
+        
+      </ion-button>
+    </div>
+    <div>
+      
+      <ion-button (click)="goToProductos()">
+        <div>
+          <div>
+            <ion-icon slot="start" style="height:70px; width: 70px;" name="add-circle"></ion-icon>
+            
+          </div>
+          <div>
+            <h6>Agregar <br> Productos</h6>
+          
+          </div>
+        </div>
+      </ion-button>
+    </div>
+    <div>
+      <ion-button (click)="goToPromocion()">
+        <div>
+          <div>
+            <ion-icon name="book" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Ver Productos</h6>
+          </div>
+        </div>
+        
+        
+      </ion-button>
+    </div>
+    <div>
+      <ion-button (click)="logout()">
+        <div>
+          <div>
+            <ion-icon name="exit" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Salir</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,30 @@
+
+.botones > div > ion-button{
+    width: 180px;
+    height: 180px;
+}
+
+.botones{
+    margin: auto;
+    margin-top: 5%;
+    justify-content: center;
+    align-content: center;
+    display: grid;
+    width: 70%;
+    height: 80%;
+    grid-template-columns: 25% 25%;
+    grid-template-rows: 45% 45%;
+}
+
+.botones > div > ion-button > div {    
+    display: grid;
+    width: 60%;
+    height: 50%;
+    justify-content: center;
+    grid-template-rows: 70% 20%;
+}
+
+.botones > div {
+    width: 87%;
+    height: 77%;
+}

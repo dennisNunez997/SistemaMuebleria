@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons>
+        <ion-button (click)="goToMenu()">
+          <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Regresar</ion-button>
+      </ion-buttons>
+    <h3 slot="end">{{nombre_admin}} {{apellido_admin}}</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div>
+      <h1>Nombres:</h1>
+      <h2>{{nombre_admin}}</h2>
+      <h1>Apellidos:</h1>
+      <h2>{{apellido_admin}}</h2>    
+    </div>
+    <div>
+      <h1>Correo Electronico:</h1>
+      <h2>{{email_admin}}</h2>
+      <h1>Telefono:</h1>
+      <h2>{{tlfono_admin}}</h2>
+    </div>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <h3 slot="end">{{nombre_admin}} {{apellido_admin}}</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="botones">
+    <div>
+      <ion-button (click)="goToProfile()" class="button1">
+        <div>
+          <div><ion-icon name="person" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>  
+            <h6>Perfil</h6>
+          </div>
+        </div>
+        
+      </ion-button>
+    </div>
+    <div>
+      
+      <ion-button>
+        <div>
+          <div>
+            <ion-icon name="people" slot="start" style="height:70px; width: 70px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Vendedores</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+    <div>
+      <ion-button (click)="goToCategoria()">
+        <div>
+          <div>
+            <ion-icon name="exit" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Categorias</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+
+
+    <div>
+      <ion-button (click)="goToSolicitudes()">
+        <div>
+          <div>
+            <ion-icon name="checkmark-circle" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Solicitud de <br> vendedores</h6>
+          </div>
+        </div>
+        
+        
+      </ion-button>
+    </div>
+    <div>
+      <ion-button (click)="logout()">
+        <div>
+          <div>
+            <ion-icon name="exit" slot="start" style="height:60px; width: 60px;"></ion-icon>
+          </div>
+          <div>
+            <h6>Salir</h6>
+          </div>
+        </div>
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

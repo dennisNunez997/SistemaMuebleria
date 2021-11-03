@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase : {
+    apiKey: "AIzaSyCh5M0d2FXdGdsQFTv-s4wLiqSvPPKzGhA",
+    authDomain: "muebleriaglobal.firebaseapp.com",
+    databaseURL: "https://muebleriaglobal-default-rtdb.firebaseio.com",
+    projectId: "muebleriaglobal",
+    storageBucket: "muebleriaglobal.appspot.com",
+    messagingSenderId: "865651299911",
+    appId: "1:865651299911:web:655d7368ca2a9a42518362",
+    measurementId: "G-HC8W09VZ89"
+  }
 };
 
 /*

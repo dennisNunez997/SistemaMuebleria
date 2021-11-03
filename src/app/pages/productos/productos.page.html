@@ -1,0 +1,144 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons>
+        <ion-button (click)="goToMenu()">
+          <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Regresar</ion-button>
+      </ion-buttons>
+    <h3 slot="end">{{nombre_admin}} {{apellido_admin}}</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row size="2">
+      <ion-col>
+        <form [formGroup]="ProductForm">
+          <ion-label>Nombre del proveedor</ion-label>
+          <ion-input [disabled]="true" value="{{nombre_proveedor}} {{apellido_proveedor}}"></ion-input>
+          <ion-label>Nombre de la empresa</ion-label>
+          <ion-input [disabled]="true" value="{{nombre_empresa}}"></ion-input>
+          
+          <ion-item>
+            <ion-input placeholder="nombre del producto" type="text" formControlName="nombre_producto" ></ion-input>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.nombre_producto">
+              <div class="error-message" *ngIf="ProductForm.get('nombre_producto').hasError(error.type) && (ProductForm.get('nombre_producto').dirty || ProductForm.get('nombre_producto').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+          <ion-item>
+            <ion-input placeholder="descripcion del producto" type="text" formControlName="descripcion_producto" ></ion-input>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.descripcion_producto">
+              <div class="error-message" *ngIf="ProductForm.get('descripcion_producto').hasError(error.type) && (ProductForm.get('descripcion_producto').dirty || ProductForm.get('descripcion_producto').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>    
+          <ion-item>
+            <ion-input placeholder="precio del producto" type="number" formControlName="precio_producto"></ion-input>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.precio_producto">
+              <div class="error-message" *ngIf="ProductForm.get('precio_producto').hasError(error.type) && (ProductForm.get('precio_producto').dirty || ProductForm.get('precio_producto').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+          <ion-item>
+            <ion-input placeholder="cantidad del producto" type="number" formControlName="cantidad_producto"></ion-input>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.cantidad_producto">
+              <div class="error-message" *ngIf="ProductForm.get('cantidad_producto').hasError(error.type) && (ProductForm.get('cantidad_producto').dirty || ProductForm.get('cantidad_producto').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+      
+          <ion-item>
+            <ion-label>Categorias</ion-label>
+            <ion-select formControlName="categoria_producto" name="categoria_producto">
+              <ion-select-option *ngFor="let categoria of categorias;"  [value]="categoria.nombre_categoria" >{{categoria.nombre_categoria}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.categoria_producto">
+              <div class="error-message" *ngIf="ProductForm.get('categoria_producto').hasError(error.type) && (ProductForm.get('categoria_producto').dirty || ProductForm.get('categoria_producto').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+          <div>
+            <ion-input (change)="capturarFile($event)" type="file"></ion-input>
+          </div>
+          <div *ngIf="previsualizacion">
+            <img style="height: 150px; width: 150px;" width="400px" height="400px" [src]="previsualizacion" alt="">
+          </div>
+          <ion-button (click)="saveProduct()" [disabled]="!ProductForm.valid" shape="round" size="default" color="primary" expand="block">Agregar Producto</ion-button>
+        </form>
+      </ion-col>
+      <ion-col size="8">
+        <div>
+          <ion-row>
+            <ion-col size="1">n°</ion-col>
+            <ion-col size="2">Producto</ion-col>
+            <ion-col size="2">Descripcion</ion-col>
+            <ion-col size="1">Precio</ion-col>
+            <ion-col size="1">Cantidad</ion-col>
+            <ion-col size="1">Categoria</ion-col>
+            <ion-col size="1">Categoria</ion-col>
+            <ion-col size="1">Eliminar</ion-col>
+            <ion-col size="1">Editar</ion-col>
+          </ion-row>
+          <ion-row  *ngFor="let producto of productos; let i=index">
+            <ion-col size="1">
+              <ion-input  value="{{i+1}}"></ion-input>
+              </ion-col>
+            <ion-col size="1">
+              <ion-input [(ngModel)]="nombre_producto"></ion-input>              
+            </ion-col >
+            <ion-col size="2">
+              <ion-input [(ngModel)]="descripcion_producto"></ion-input>
+            </ion-col>
+            <ion-col size="1">
+              <ion-input [(ngModel)]="precio_producto"></ion-input>                
+            </ion-col>
+            <ion-col size="1">
+              <ion-input [(ngModel)]="cantidad_producto"></ion-input>
+            </ion-col>
+            <ion-col size="1">
+              <ion-input value="{{producto.categoria_producto}}"></ion-input>
+            </ion-col>            
+            <ion-col size="1">
+              <ion-select disabled="true" [(ngModel)]="categoria_producto" name="categoria_producto">
+                <ion-select-option  *ngFor="let categoria of categorias;"  [value]="categoria.nombre_categoria" >{{categoria.nombre_categoria}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col>
+              <ion-button color="danger">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button>
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  
+
+
+
+
+</ion-content>

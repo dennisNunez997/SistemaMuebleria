@@ -100,16 +100,16 @@
               <ion-input  value="{{i+1}}"></ion-input>
               </ion-col>
             <ion-col size="1">
-              <ion-input [(ngModel)]="nombre_producto"></ion-input>              
+              <ion-input [value]="producto.old_nombre_producto"></ion-input>              
             </ion-col >
             <ion-col size="2">
-              <ion-input [(ngModel)]="descripcion_producto"></ion-input>
+              <ion-input [value]="producto.old_descripcion_producto"></ion-input>
             </ion-col>
             <ion-col size="1">
-              <ion-input [(ngModel)]="precio_producto"></ion-input>                
+              <ion-input [value]="producto.old_precio_producto"></ion-input>                
             </ion-col>
             <ion-col size="1">
-              <ion-input [(ngModel)]="cantidad_producto"></ion-input>
+              <ion-input [value]="producto.old_cantidad_producto"></ion-input>
             </ion-col>
             <ion-col size="1">
               <ion-input value="{{producto.categoria_producto}}"></ion-input>
@@ -126,7 +126,7 @@
             </ion-col>
             <ion-col>
               <ion-button>
-                <ion-icon name="create"></ion-icon>
+                <ion-icon (click)="edit(producto)" name="create"></ion-icon>
               </ion-button>
             </ion-col>
           </ion-row>
